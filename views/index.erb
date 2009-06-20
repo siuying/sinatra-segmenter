@@ -19,7 +19,7 @@ $("#go").bind("click", function(e){
 	$.ajax({
 	  dataType: 'jsonp',
 	  data: {'callback': 'renderResult', 'text': $("#text").val()},
-	  url: 'segmenter'
+	  url: '/segmenter'
 	});
 });
 </script>
