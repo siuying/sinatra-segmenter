@@ -9,8 +9,8 @@ get "/" do
 end
 
 get "/segmenter" do
-  if !params['text'] || !params['callback']
-    "#{params['callback']}({'error' : 'Must include both 'text' and 'callback' parameters.'})"
+  if !params['text'] || !params['callback'] 
+    "#{params['callback']}({'error' : 'Must include both 'text' parameter.'})"
   else
     segmented = segment(params['text'])
     "#{params['callback']}(#{JSON(segmented)})"

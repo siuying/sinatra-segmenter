@@ -16,11 +16,7 @@ renderResult = function(items){
 }
 
 $("#go").bind("click", function(e){
-	$.ajax({
-	  dataType: 'jsonp',
-	  data: {'callback': 'renderResult', 'text': $("#text").val()},
-	  url: '/segmenter'
-	});
+	$.getJSON("/segmenter?callback=renderResult", {'text': $("#text").val()} );
 });
 </script>
 
