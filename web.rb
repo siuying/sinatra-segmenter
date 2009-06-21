@@ -14,10 +14,10 @@ get "/segmenter" do
   else
     begin
       segmented = segment(params['text'])
-      result = JSON(segmented)
+      result    = JSON(segmented)
       "#{params['callback']}(#{result})"
     rescue StandardError => e
-      "#{params['callback']}({'error' : 'Error executing command: #{e.message}'})"
+      "#{params['callback']}({'error' : '#{e.message}'})"
     end
   end
 end
