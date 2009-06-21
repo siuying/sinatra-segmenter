@@ -16,7 +16,7 @@ renderResult = function(items){
 }
 
 $("#go").bind("click", function(e){
-	$.getJSON("http://segmenter.heroku.com/segmenter?callback=?",
+	$.getJSON("/segmenter?callback=?",
 	 	{'text': $("#text").val()}, function(data){renderResult(data)} );
 });
 </script>
