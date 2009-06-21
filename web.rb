@@ -10,9 +10,14 @@ end
 
 get "/segmenter" do
   if !params['text'] || !params['callback'] 
-    "#{params['callback']}({'error' : 'Must include both 'text' parameter.'})"
+    "#{params['callback']}({'error' : 'Must include both 'text' and 'callback' parameter.'})"
   else
-    segmented = segment(params['text'])
-    "#{params['callback']}(#{JSON(segmented)})"
+    begin
+      segmented = segment(params['text'])
+      result = JSON(segmented)
+      "#{params['callback']}(#{result})"
+    rescue StandardError => e
+      "#{params['callback']}({'error' : 'Error executing command: #{e.message}'})"
+    end
   end
 end
